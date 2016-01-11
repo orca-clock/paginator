@@ -47,7 +47,7 @@ func NewPaginator(url string, params map[string]string, totalRows, listRows, cur
 		params:    params,
 		listRows:  DEFAULT_LIST_ROWS,
 		pageVar:   DEFAULT_PAGE_VAR,
-		theme:     SIMPLE_THEME,
+		theme:     DEFAULT_THEME,
 		configs:   DEFAULT_CONFIGS}
 
 	p.totalRows = totalRows
@@ -80,6 +80,10 @@ func (p *Paginator) SetGroupPages(groupPages int) {
 	if groupPages > 0 {
 		p.groupPages = groupPages
 	}
+}
+
+func (p *Paginator) SetTheme(theme string) {
+	p.theme = theme
 }
 
 func (p *Paginator) Build() string {
