@@ -17,6 +17,8 @@ func main() {
 	//configs := map[string]string{"prev": "&lt;&lt;", "next": "&gt;&gt;", "up": "&lt;", "down": "&gt;", "first": "first", "last": "last"}
 	//p.MergeConfigs(configs)
 	//p.SetTheme(paginator.FULL_THEME)
+	//theme: %first% %prev% %up% %link% %down% %next% %last%
+	//p.SetTheme("%up% %down%")
 
 	fmt.Println(p.Build())
 }
