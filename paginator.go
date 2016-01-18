@@ -162,7 +162,7 @@ func (p *Paginator) Build() string {
 	for i := 1; i <= p.groupPages; i++ {
 		page := (nowPageGroup-1)*p.groupPages + i
 		if page != p.currentPage {
-			if page < p.totalPages {
+			if page <= p.totalPages {
 				linkPage := fmt.Sprintf("<li><a href=\"%s\">%s</a></li>",
 					strings.Replace(url, "__PAGE__", strconv.Itoa(page), 1),
 					strconv.Itoa(page))
