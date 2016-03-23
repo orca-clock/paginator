@@ -3,6 +3,7 @@ package paginator
 import (
 	"fmt"
 	"math"
+	netUrl "net/url"
 	"strconv"
 	"strings"
 )
@@ -92,12 +93,14 @@ func (p *Paginator) Build() string {
 	}
 
 	p.params[p.pageVar] = "__PAGE__"
-	querys := make([]string, 0)
+	u, _ := netUrl.Parse(p.url)
+	query := u.Query()
 	for key, value := range p.params {
-		querys = append(querys, key+"="+value)
+		query.Set(key, value)
 	}
+	u.RawQuery = query.Encode()
 
-	url := p.url + "?" + strings.Join(querys, "&")
+	url := u.String()
 
 	replacePairs := make([]string, 0)
 
